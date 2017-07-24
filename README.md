@@ -7,7 +7,26 @@ Another great plus is that it can be used in the Query of an URL, integrating pe
 
 # Syntax
 
-Work in Progress
+General syntax: `<selector><operator><expression>[<connector><selector><operator><expression>[...]]`
+
+The selector is the field you want to validate.
+The operator defines how to check the expression.
+Some operators can only be used by specific data types.
+
+| operator | function | data types |
+| --- | --- | --- |
+| == | equals | string, bool, number, date |
+| != | not equals | string, bool, number, data |
+| =#= | equals (ignore case) | string |
+| !#= | not equals (ignore case) | string |
+| >= | bigger or equals | number, date |
+| <= | smaller or equals | number, date |
+| > | bigger | number, date |
+| < | smaller | number, date |
+
+The expression defines how the value of the field has to be and can have some operators of its own.
+
+| operator | function | data types |
 
 # Code Example
 
