@@ -9,7 +9,46 @@ Another great plus is that it can be used in the Query of an URL, integrating pe
 
 General syntax: `<selector><operator><expression>[<connector><selector><operator><expression>[...]]`
 
-The selector is the field you want to validate.
+## Selector
+
+The selector is the field you want to validate.  
+If the object has the following structure:
+
+| field | value |
+| --- | --- |
+| first_name | "Peter" |
+| last_name | "Griffin" |
+| birth_date | null |
+| income | -1 |
+
+And the selector would be "first_name", then you would ask for the value of the field "first_name".
+
+## Connector
+Connector connect two selections with an AND or OR operator.
+AND has always a higher priority.
+`(` and `)` allow you to manipulate the priority chain. 
+
+| connector | function |
+| --- | --- |
+| ; | AND |
+| , | OR |
+
+## Data Types
+
+The data type is defined by the field.
+
+| data type | description | Java |
+| --- | --- | --- |
+| bool | can either be `true` or `false` | java.lang.Boolean |
+| string | text | java.lang.String |
+| number | number... duh! | java.lang.Number (byte, short, int, long, float, double) |
+| date | a date and/or time | java.util.Date |
+
+All Java objects that are not these types will be converted to string with the value of `toString()`.
+An exception to this rule are `Iteratable`s. An Iteratable will have multiple values.
+
+## Operators
+
 The operator defines how to check the expression.
 Some operators can only be used by specific data types.
 
@@ -24,7 +63,9 @@ Some operators can only be used by specific data types.
 | > | bigger | number, date |
 | < | smaller | number, date |
 
-The expression defines how the value of the field has to be and can have some operators of its own.
+## Expression Operators
+
+The expression defines how the value of the field has to be like and can have some operators of its own.
 
 | operator | function | data types |
 | --- | --- | --- |
@@ -33,6 +74,32 @@ The expression defines how the value of the field has to be and can have some op
 | * | wild card for an undefined number of characters | string |
 | [`value`] | contains (has to be wrapped arround the value) | string |
 | `value`~`value` | defines a range | number, date |
+
+## Escaping Characters
+
+| character | escape sequence |
+| --- | --- |
+| \ | \\ |
+| LINE BREAK | \n |
+| TAB | \t |
+| BACKSPACE | \b |
+| RETURN | \r |
+| ( | \( |
+| ) | \) |
+| ; | \; |
+| , | \, |
+| == | \== |
+| != | \!= |
+| <= | \<= |
+| >= | \>= |
+| < | \< |
+| > | \> |
+| =#= | \=#= |
+| !#= | \!#= |
+| ~ | \~ |
+| &#124; | \&#124; |
+| [ | \[ |
+| ] | \] |
 
 # Code Example
 
