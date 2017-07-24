@@ -25,7 +25,7 @@
 package de.ralleytn.simple.fiql;
 
 /**
- * Wird von der Methode {@link FIQL#eval(String, java.util.Map)} geworfen.
+ * Is thrown by the {@code eval} methods in the {@linkplain FIQL} class.
  * @author Ralph Niemitz/RalleYTN(ralph.niemitz@gmx.de)
  * @version 1.0.0
  * @since 1.0.0
@@ -35,8 +35,8 @@ public class FIQLException extends Exception {
 	private static final long serialVersionUID = 4316746365211043134L;
 
 	/**
-	 * Konstruiert eine neue Exception.
-	 * @param message Die Fehlernachricht
+	 * Creates a new {@linkplain Exception}.
+	 * @param message message of the exception
 	 * @since 1.0.0
 	 */
 	public FIQLException(String message) {
@@ -45,8 +45,8 @@ public class FIQLException extends Exception {
 	}
 	
 	/**
-	 * Wrapped eine andere Exception.
-	 * @param exception Die Exception, die gewrapped werden soll
+	 * Wraps an {@linkplain Exception}.
+	 * @param exception {@linkplain Exception} to wrap
 	 * @since 1.0.0
 	 */
 	public FIQLException(Exception exception) {

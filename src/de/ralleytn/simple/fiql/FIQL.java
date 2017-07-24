@@ -32,6 +32,7 @@ import java.net.URLDecoder;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
@@ -41,7 +42,7 @@ import java.util.Stack;
 import java.util.regex.Pattern;
 
 /**
- * Enthält die Methode {@link #eval(String, Map)}.
+ * Contains all methods, that are important for SimpleFIQL.
  * @author Ralph Niemitz/RalleYTN(ralph.niemitz@gmx.de)
  * @version 1.0.0
  * @since 1.0.0
@@ -54,11 +55,35 @@ public final class FIQL {
 	private static final DateFormat FORMAT_DTZ = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZ");
 	
 	/**
-	 * Evaluiert eine Search-Query gegen ein Objekt.
-	 * @param fiql Die Search-Query
-	 * @param value Das Objekt, gegen das die Search-Query evaluiert werden soll
-	 * @return {@code true}, wenn das Objekt der Search-Query entspricht, andernfalls {@code false}
-	 * @throws FIQLException Wenn irgendetwas mit der Search-Query nicht stimmt.
+	 * Evaluates a FIQL-Query against an {@linkplain Iterable}.
+	 * @param fiql FIQL-Query
+	 * @param values {@linkplain Iterable} to evaluate against
+	 * @param <T> the type
+	 * @return all filtered elements
+	 * @throws FIQLException if something is wrong with the FIQL-Query
+	 * @since 1.0.0
+	 */
+	public static final <T>List<T> eval(String fiql, Iterable<T> values) throws FIQLException {
+		
+		List<T> filtered = new ArrayList<>();
+		
+		for(T value : values) {
+			
+			if(FIQL.eval(fiql, value)) {
+				
+				filtered.add(value);
+			}
+		}
+		
+		return filtered;
+	}
+	
+	/**
+	 * Evaluates a FIQL-Query against an {@linkplain Object}.
+	 * @param fiql FIQL-Query
+	 * @param value {@linkplain Object} to evaluate against
+	 * @return {@code true}, if the {@linkplain Object} is positive, else {@code false}
+	 * @throws FIQLException if something is wrong with the FIQL-Query
 	 * @since 1.0.0
 	 */
 	public static final boolean eval(String fiql, Object value) throws FIQLException {
@@ -89,11 +114,11 @@ public final class FIQL {
 	}
 	
 	/**
-	 * Evaluiert eine Search-Query gegen ein Objekt.
-	 * @param fiql Die Search-Query
-	 * @param value Das Objekt, gegen das die Search-Query evaluiert werden soll
-	 * @return {@code true}, wenn das Objekt der Search-Query entspricht, andernfalls {@code false}
-	 * @throws FIQLException Wenn irgendetwas mit der Search-Query nicht stimmt.
+	 * Evaluates a FIQL-Query against a {@linkplain Map}.
+	 * @param fiql FIQL-Query
+	 * @param value {@linkplain Map} to evaluate against
+	 * @return {@code true}, if the {@linkplain Map} is positive, else {@code false}
+	 * @throws FIQLException if something is wrong with the FIQL-Query
 	 * @since 1.0.0
 	 */
 	public static final boolean eval(String fiql, Map<?, ?> value) throws FIQLException {
@@ -545,7 +570,7 @@ public final class FIQL {
 		
 		try {
 			
-			// If-Else ist schneller als Switch
+			// 'if' is faster than 'switch'
 			
 			       if(expression.contains(",")) {return FIQL.processOr(expression, value);
 			} else if(expression.contains(";")) {return FIQL.processAnd(expression, value);

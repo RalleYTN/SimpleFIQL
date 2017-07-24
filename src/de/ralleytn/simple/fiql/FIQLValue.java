@@ -30,7 +30,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * Wird an Getter gesetzt um sie für die Evaluierung zu markieren.
+ * Marks getters to be used in the evaluation of FIQL-Querys
  * @author Ralph Niemitz/RalleYTN(ralph.niemitz@gmx.de)
  * @version 1.0.0
  * @since 1.0.0
@@ -40,7 +40,7 @@ import java.lang.annotation.Target;
 public @interface FIQLValue {
 
 	/**
-	 * @return Den Namen des Wertes
+	 * @return the field name
 	 * @since 1.0.0
 	 */
 	public String value();
