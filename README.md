@@ -27,6 +27,11 @@ Some operators can only be used by specific data types.
 The expression defines how the value of the field has to be and can have some operators of its own.
 
 | operator | function | data types |
+| &#124; | seperates two values, if one fits, `true` is returned | string |
+| ? | wild card for a single character | string |
+| * | wild card for an undefined number of characters | string |
+| [] | contains (has to be wrapped arround the value) | string |
+| ~ | defines a range | number, date |
 
 # Code Example
 
