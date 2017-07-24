@@ -105,7 +105,7 @@ for(Person person : massiveArray) {
 
 	try {
 	
-		if(FIQL.eval(person)) {
+		if(FIQL.eval("first_name=#=P*", person)) {
 		
 			filtered.add(person);
 		}
