@@ -117,6 +117,16 @@ for(Person person : massiveArray) {
 }
 ```
 
+But we could also use a short version for this. It does exactly the same but in one line.
+
+```java
+List<Person> filtered = FIQL.eval("first_name=#=P*", massiveArray);
+```
+
+# Links
+
+See the [online documentation](https://ralleytn.github.io/SimpleFIQL/)
+
 # License
 
 MIT License
