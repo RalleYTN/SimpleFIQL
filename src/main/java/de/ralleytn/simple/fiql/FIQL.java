@@ -21,7 +21,6 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-
 package de.ralleytn.simple.fiql;
 
 import java.io.UnsupportedEncodingException;
@@ -736,7 +735,7 @@ public final class FIQL {
 					}
 					
 					builder.append('\\');
-					tokens[index] = '\0'; // Wenn man mehrere '\' hintereinander hat und diese Zeile wäre nicht da, könnte es zu Problemen kommen.
+					tokens[index] = '\0'; // This line is important for the case that multiple '\' exist
 				}
 				
 			} else if(mapping.containsKey(tokens[index])) {

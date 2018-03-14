@@ -1,3 +1,5 @@
+![Build Result](https://api.travis-ci.org/RalleYTN/SimpleFIQL.svg?branch=master)
+
 # Description
 
 SimpleFIQL is a drastically simplified version of the Feed Item Query Language or short FIQL.
@@ -5,11 +7,11 @@ Its main purpose is to validate a Search-Query against an object.
 This way you can filter out a few objects out of an massive array.
 Another great plus is that it can be used in the Query of an URL, integrating perfectly with RESTful APIs.
 
-# Syntax
+### Syntax
 
 General syntax: `<selector><operator><expression>[<connector><selector><operator><expression>[...]]`
 
-## Selector
+#### Selector
 
 The selector is the field you want to validate.  
 If the object has the following structure:
@@ -23,7 +25,7 @@ If the object has the following structure:
 
 And the selector would be "first_name", then you would ask for the value of the field "first_name".
 
-## Connector
+#### Connector
 Connector connect two selections with an AND or OR operator.
 AND has always a higher priority.
 `(` and `)` allow you to manipulate the priority chain. 
@@ -33,7 +35,7 @@ AND has always a higher priority.
 | ; | AND |
 | , | OR |
 
-## Data Types
+#### Data types
 
 The data type is defined by the field.
 
@@ -47,7 +49,7 @@ The data type is defined by the field.
 All Java objects that are not these types will be converted to string with the value of `toString()`.
 An exception to this rule are `Iteratable`s. An Iteratable will have multiple values.
 
-## Operators
+#### Operators
 
 The operator defines how to check the expression.
 Some operators can only be used by specific data types.
@@ -63,7 +65,7 @@ Some operators can only be used by specific data types.
 | > | bigger | number, date |
 | < | smaller | number, date |
 
-## Expression Operators
+#### Expression operators
 
 The expression defines how the value of the field has to be like and can have some operators of its own.
 
@@ -75,7 +77,7 @@ The expression defines how the value of the field has to be like and can have so
 | [`value`] | contains (has to be wrapped arround the value) | string |
 | `value`~`value` | defines a range | number, date |
 
-## Escaping Characters
+#### Escaping characters
 
 | character | escape sequence |
 | --- | --- |
@@ -101,7 +103,7 @@ The expression defines how the value of the field has to be like and can have so
 | [ | \\[ |
 | ] | \\] |
 
-# Code Example
+### Code example
 
 Let's say we have a massive array of persons and we want to filter all of them who's first name starts with the letter 'P'.  
 The person class looks like this:
@@ -149,7 +151,7 @@ The first thing we have to do is to mark all the Getters which we want to use in
 ```java
 public class Person {
 
-    private String firstName;
+	private String firstName;
 	private String lastName;
 	private Date birthDate;
 	private float income;
@@ -215,12 +217,21 @@ But we could also use a short version for this. It does exactly the same but in 
 List<Person> filtered = FIQL.eval("first_name=#=P*", massiveArray);
 ```
 
-# Links
+## Changelog
 
-See the [online documentation](https://ralleytn.github.io/SimpleFIQL/)
+### Version 2.0.0 (incompatible with older versions of the library)
 
-# License
+- Made the project modular for Java 9
+- Added Unit-Tests
+- Added Maven support
 
+### Version 1.0.0
+
+- Release
+
+## License
+
+```
 MIT License
 
 Copyright (c) 2017 Ralph Niemitz
@@ -242,3 +253,10 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+```
+
+## Links
+
+- [Online Documentation](https://ralleytn.github.io/SimpleFIQL/)
+- [Download](https://github.com/RalleYTN/SimpleFIQL/releases)
+- [Java 8 Compatible Version](https://github.com/RalleYTN/SimpleFIQL/tree/java8)

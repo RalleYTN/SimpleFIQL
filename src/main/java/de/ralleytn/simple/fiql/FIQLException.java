@@ -21,27 +21,35 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-
 package de.ralleytn.simple.fiql;
 
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
-
 /**
- * Marks getters to be used in the evaluation of FIQL-Querys
+ * Is thrown by the {@code eval} methods in the {@linkplain FIQL} class.
  * @author Ralph Niemitz/RalleYTN(ralph.niemitz@gmx.de)
  * @version 1.0.0
  * @since 1.0.0
  */
-@Retention(RetentionPolicy.RUNTIME)
-@Target(ElementType.METHOD)
-public @interface FIQLValue {
+public class FIQLException extends Exception {
+
+	private static final long serialVersionUID = 4316746365211043134L;
 
 	/**
-	 * @return the field name
+	 * Creates a new {@linkplain Exception}.
+	 * @param message message of the exception
 	 * @since 1.0.0
 	 */
-	public String value();
+	public FIQLException(String message) {
+		
+		super(message);
+	}
+	
+	/**
+	 * Wraps an {@linkplain Exception}.
+	 * @param exception {@linkplain Exception} to wrap
+	 * @since 1.0.0
+	 */
+	public FIQLException(Exception exception) {
+		
+		super(exception);
+	}
 }
