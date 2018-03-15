@@ -1,4 +1,5 @@
-![Build Result](https://api.travis-ci.org/RalleYTN/SimpleFIQL.svg?branch=master)
+[![Build Result](https://api.travis-ci.org/RalleYTN/SimpleFIQL.svg?branch=master)](https://travis-ci.org/RalleYTN/SimpleFIQL)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/0a1267e26ca3451ba699e2c44ed72e43)](https://www.codacy.com/app/ralph.niemitz/SimpleFIQL?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=RalleYTN/SimpleFIQL&amp;utm_campaign=Badge_Grade)
 
 # Description
 
